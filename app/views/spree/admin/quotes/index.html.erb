@@ -1,0 +1,40 @@
+<% content_for :page_title do %>
+    <%= "Listing CSV orders files" %>
+<% end %>
+<% content_for :page_actions do %>
+    <% if can?(:admin, Spree::Order) %>
+        <li><%= button_link_to Spree.t(:back_to_orders_list), admin_orders_path, :icon => 'icon-arrow-left' %></li>
+    <% end %>
+<% end %>
+
+<%= render :partial => 'spree/shared/error_messages', :locals => { :target => @csv_order } %>
+
+<% if @quotes.try(:any?) %>
+    <table class="index responsive" id="listing_orders" data-hook>
+      <colgroup>
+        <col style="width: 20%;">
+        <col style="width: 20%;">
+        <col style="width: 20%;">
+        <col style="width: 20%;">
+        <col style="width: 20%;">
+      </colgroup>
+      <thead>
+      <tr data-hook="admin_orders_index_headers">
+        <th>Created at</th>
+        <th>Order</th>
+        <th>Expires at</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @quotes.each do |quote| %>
+          <tr data-hook="admin_orders_index_rows" class="<%= cycle('odd', 'even') %>">
+            <td class="align-center"><%= l quote.created_at.to_date %></td>
+            <td class="align-center"><%= link_to quote.order.number, admin_orders_path(quote.order.id) %></td>
+            <td class="align-center"><%= l quote.expiration_date.to_date%></td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+<% end %>
+
+
