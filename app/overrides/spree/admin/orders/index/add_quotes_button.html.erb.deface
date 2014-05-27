@@ -1,0 +1,5 @@
+<!-- insert_after "erb[silent]:contains('content_for :page_actions')" -->
+
+<li>
+  <%= button_link_to Spree.t(:quotes), admin_quotes_path, :icon => 'icon-file', :id => 'admin_quotes' %>
+</li>

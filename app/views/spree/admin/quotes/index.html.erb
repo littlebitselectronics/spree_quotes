@@ -29,7 +29,7 @@
       <% @quotes.each do |quote| %>
           <tr data-hook="admin_orders_index_rows" class="<%= cycle('odd', 'even') %>">
             <td class="align-center"><%= l quote.created_at.to_date %></td>
-            <td class="align-center"><%= link_to quote.order.number, admin_orders_path(quote.order.id) %></td>
+            <td class="align-center"><%= link_to quote.order.number, edit_admin_order_path(quote.order.number) %></td>
             <td class="align-center"><%= l quote.expiration_date.to_date%></td>
           </tr>
       <% end %>
