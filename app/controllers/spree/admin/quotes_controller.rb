@@ -4,7 +4,6 @@ module Spree
 
       def index
         @quotes = Quote.all
-        binding.pry
       end
 
       def create
