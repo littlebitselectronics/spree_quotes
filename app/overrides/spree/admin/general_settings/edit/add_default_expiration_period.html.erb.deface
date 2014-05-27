@@ -1,0 +1,8 @@
+<!-- insert_bottom '.omega.six.columns'-->
+
+<fieldset class="invoices no-border-bottom">
+    <div class="field">
+      <%= label_tag :default_expiration_period, Spree.t(:default_expiration_period) %>
+      <%= text_field_tag :default_expiration_period, datepicker_field_value(Spree::Config[:default_expiration_period].to_date), class: 'datepicker', style: 'width: 53%'%>
+    </div>
+</fieldset>
