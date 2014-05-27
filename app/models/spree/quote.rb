@@ -7,7 +7,7 @@ class Spree::Quote < ActiveRecord::Base
   validate :order_addresses, :on => :create
 
   def set_expiration_date
-    self.expiration_date = 7.days.from_now
+    self.expiration_date = DateTime.now + Spree::Config[:default_expiration_period].to_i.days
   end
 
   def order_items
