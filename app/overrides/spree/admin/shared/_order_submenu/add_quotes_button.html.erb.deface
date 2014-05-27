@@ -1,0 +1,5 @@
+<!-- insert_after "[data-hook=admin_order_tabs]" -->
+
+<% if @order and @order.completed_at? %>
+  <%= button_link_to 'Generate Quote', admin_quote_path(@order.quote, :pdf , :template => button), icon: 'icon-plus', id: 'admin_import_quote_orders' %>
+<% end %>
