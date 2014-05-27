@@ -6,8 +6,6 @@ class Spree::Quote < ActiveRecord::Base
   validate :order_items, :on => :create
   validate :order_addresses, :on => :create
 
-
-
   def set_expiration_date
     self.expiration_date = 7.days.from_now
   end
