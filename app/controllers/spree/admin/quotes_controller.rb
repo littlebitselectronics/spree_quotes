@@ -15,9 +15,11 @@ module Spree
 
       def create
         @quote = Quote.find_or_create_by(quote_params)
-        if @quote
+        if @quote.valid?
+          flash[:success] = Spree.t('quote_created')
           redirect_to edit_admin_quote_path(@quote)
         else
+          flash[:error] = @quote.errors.messages.values.join(", ")
           redirect_to :back
         end
       end
@@ -29,6 +31,7 @@ module Spree
           flash[:success] = Spree.t('quote_updated')
           redirect_to edit_admin_quote_path(@quote)
         else
+          flash[:error] = @quote.errors.messages.values.join(", ")
           render :action => :edit
         end
       end

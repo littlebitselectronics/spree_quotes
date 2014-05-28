@@ -23,7 +23,7 @@ render :partial => "spree/admin/orders/address"
 
 move_down 30
 
-render :partial => "spree/admin/orders/line_items_box"
+render :partial => "spree/admin/orders/line_items"
 
 move_down 8
 

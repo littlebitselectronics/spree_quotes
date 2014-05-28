@@ -23,7 +23,7 @@
           <td class="align-center"><%= link_to quote.order.number, edit_admin_order_path(quote.order.number) %></td>
           <td class="align-center"><%= l quote.expiration_date.to_date %></td>
           <td class="align-center">
-            <span class="state <%= quote.state.downcase %>"><%= Spree.t("#{quote.state}") %></span></td>
+            <span class="state <%= status_text(quote.state) %>"><%= Spree.t("#{status_text(quote.state)}") %></span></td>
           </td>
           <td class="quote-actions actions" data-hook="admin_quote_index_row_actions">
             <%= link_to '', edit_admin_quote_path(quote), no_text: true, class: 'icon_link icon-edit no-text with-tip' %>

@@ -10,6 +10,7 @@ en:
     expiration_date: Expiration Date
     print_note: ''
     payment_received: Payment Received
+    quote_created: Quoted was created successfully
     quote_updated: Quote Updated
     available: Available
     expired: Expired
