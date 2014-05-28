@@ -13,13 +13,16 @@ module Spree
       end
 
       def create
-        @quote = Quote.new quote_params
-        if @quote.save
-          redirect_to admin_quotes_path
+        @quote = Quote.find_or_create_by(quote_params)
+        if @quote
+          redirect_to edit_admin_quote_path(@quote)
         else
           redirect_to :back
         end
+      end
 
+      def edit
+        @quote = Quote.find(params[:id])
       end
 
       private

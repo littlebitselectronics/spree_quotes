@@ -19,14 +19,6 @@ font "Helvetica",  :size => 9,  :style => :bold
 text "#{Spree.t(:order_number)} #{@order.number}", :align => :right
 text "#{Spree.t(:expiration_date)} #{@order.quote.expiration_date.to_date}", :align => :right
 
-move_down 2
-font "Helvetica", :size => 9
-text "#{I18n.l @order.completed_at.to_date}", :align => :right
-
-move_down 2
-font "Helvetica",  :size => 9,  :style => :bold
-text "Invoice #{@order.shipments.first.number}", :align => :right
-
 render :partial => "spree/admin/orders/address"
 
 move_down 30

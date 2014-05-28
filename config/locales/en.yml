@@ -4,5 +4,7 @@
 en:
   order_quote: Order Quote
   spree:
+    generate_quote: Generate Quote
+    generate_pdf: Generate PDF
     expiration_date: Expiration Date
     print_note: ''

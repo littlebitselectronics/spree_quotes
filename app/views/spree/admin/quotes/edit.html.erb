@@ -1,0 +1,12 @@
+<% content_for :page_actions do %>
+  <% if can?(:admin, Spree::Order) %>
+    <li><%= button_link_to Spree.t(:generate_quote), admin_quote_path(@quote), :icon => 'icon-file' %></li>
+    <li><%= button_link_to Spree.t(:back_to_quote_list), admin_quotes_path, :icon => 'icon-arrow-left' %></li>
+  <% end %>
+<% end %>
+
+<%= form_for [:admin, @quote], method: :put, html: { :multipart => true } do |f| %>
+  <fieldset class="no-border-top">
+    <%= render :partial => 'form', :locals => { :f => f } %>
+  </fieldset>
+<% end %>
