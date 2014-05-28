@@ -4,7 +4,12 @@
 en:
   order_quote: Order Quote
   spree:
+    quotes: Quotes
     generate_quote: Generate Quote
     generate_pdf: Generate PDF
     expiration_date: Expiration Date
     print_note: ''
+    payment_received: Payment Received
+    quote_updated: Quote Updated
+    available: Available
+    expired: Expired

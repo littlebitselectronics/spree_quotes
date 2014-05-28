@@ -1,6 +1,7 @@
 module Spree
   module Admin
     class QuotesController < BaseController
+      before_action :load_quote, only: [:edit, :update]
       respond_to :pdf
 
       def index
@@ -21,19 +22,30 @@ module Spree
         end
       end
 
-      def edit
-        @quote = Quote.find(params[:id])
+      def edit; end
+
+      def update
+        if @quote.update_attributes(quote_params)
+          flash[:success] = Spree.t('quote_updated')
+          redirect_to edit_admin_quote_path(@quote)
+        else
+          render :action => :edit
+        end
       end
 
       private
 
       def quote_params
-        params[:quote].permit(:order_id)
+        params[:quote].permit(:order_id, :payment_received)
       end
 
       def load_order
         @order = Quote.find(params[:id]).try(:order)
         authorize! action, @order
+      end
+
+      def load_quote
+        @quote = Quote.find(params[:id])
       end
 
     end

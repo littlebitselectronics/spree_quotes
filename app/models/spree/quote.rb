@@ -23,4 +23,8 @@ class Spree::Quote < ActiveRecord::Base
     errors.add :order, errors_msg.join("<br/><br/>") unless errors_msg.empty?
   end
 
+  def state
+    expiration_date > Spree::Config[:default_expiration_period] ? 'Available' : 'Expired'
+  end
+
 end
