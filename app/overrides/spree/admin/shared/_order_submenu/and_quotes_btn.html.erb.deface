@@ -1,3 +1,0 @@
-<!-- insert_after "[data-hook=admin_order_tabs]" -->
-<%= button_link_to 'Generate Quote', admin_quotes_url({quote: { order_id: @order.id}}), :method => :post, :icon => 'icon-plus', :id => 'admin_import_orders' %>
-

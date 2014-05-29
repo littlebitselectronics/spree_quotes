@@ -1,0 +1,9 @@
+<div data-hook="admin_quote_form_fields">
+  <div class="field checkbox align-center">
+    <label>
+      <%= f.check_box :payment_received, { checked: @quote.payment_received }, '1', '0' %>
+      <%= Spree.t(:payment_received) %>
+    </label>
+  </div>
+  <div class="clear"></div>
+</div>

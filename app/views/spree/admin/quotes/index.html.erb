@@ -7,34 +7,8 @@
     <% end %>
 <% end %>
 
-<%= render :partial => 'spree/shared/error_messages', :locals => { :target => @csv_order } %>
+<div data-hook="admin_quote_edit_header">
+  <%= render partial: 'spree/shared/error_messages', locals: { target: @quote } %>
+</div>
 
-<% if @quotes.try(:any?) %>
-    <table class="index responsive" id="listing_orders" data-hook>
-      <colgroup>
-        <col style="width: 20%;">
-        <col style="width: 20%;">
-        <col style="width: 20%;">
-        <col style="width: 20%;">
-        <col style="width: 20%;">
-      </colgroup>
-      <thead>
-      <tr data-hook="admin_orders_index_headers">
-        <th>Created at</th>
-        <th>Order</th>
-        <th>Expires at</th>
-      </tr>
-      </thead>
-      <tbody>
-      <% @quotes.each do |quote| %>
-          <tr data-hook="admin_orders_index_rows" class="<%= cycle('odd', 'even') %>">
-            <td class="align-center"><%= l quote.created_at.to_date %></td>
-            <td class="align-center"><%= link_to quote.order.number, edit_admin_order_path(quote.order.number) %></td>
-            <td class="align-center"><%= l quote.expiration_date.to_date%></td>
-          </tr>
-      <% end %>
-      </tbody>
-    </table>
-<% end %>
-
-
+<%= render partial: 'quotes', locals: { quotes: @quotes } %>

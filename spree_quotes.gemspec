@@ -2,7 +2,7 @@
 Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.name        = 'spree_quotes'
-  s.version     = '2.2.2.beta'
+  s.version     = '2.2.2'
   s.summary     = 'This extensions adds quotes to spree'
   s.description = 'This extensions adds quotes to spree'
   s.required_ruby_version = '>= 1.9.3'
@@ -17,6 +17,7 @@ Gem::Specification.new do |s|
   s.requirements << 'none'
 
   s.add_dependency 'spree_core', '~> 2.2.2.beta'
+  s.add_dependency('prawn', '0.8.4')
 
   s.add_development_dependency 'capybara', '~> 2.1'
   s.add_development_dependency 'coffee-rails'

@@ -2,4 +2,15 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  hello: "Hello world"
+  order_quote: Order Quote
+  spree:
+    quotes: Quotes
+    generate_quote: Generate Quote
+    generate_pdf: Generate PDF
+    expiration_date: Expiration Date
+    print_note: ''
+    payment_received: Payment Received
+    quote_created: Quoted was created successfully
+    quote_updated: Quote Updated
+    available: Available
+    expired: Expired
