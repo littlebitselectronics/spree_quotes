@@ -1,3 +1,7 @@
 <!-- insert_after "[data-hook=admin_order_tabs]" -->
 
-<%= button_link_to 'Generate Quote', admin_quotes_url({quote: { order_id: @order.id}}), :method => :post, :icon => 'icon-plus', :id => 'admin_import_quote_orders' %>
+<% if @order.quote.present? %>
+  <%= button_link_to Spree.t(:generate_pdf), admin_quote_path(@order.quote), :icon => 'icon-file' %>
+<% else %>
+  <%= button_link_to Spree.t(:generate_quote), admin_quotes_url({quote: { order_id: @order.id}}), :method => :post, :icon => 'icon-plus', :id => 'admin_import_quote_orders' %>
+<% end %>

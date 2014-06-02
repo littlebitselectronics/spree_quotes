@@ -17,7 +17,7 @@ module Spree
         @quote = Quote.find_or_create_by(quote_params)
         if @quote.valid?
           flash[:success] = Spree.t('quote_created')
-          redirect_to edit_admin_quote_path(@quote)
+          redirect_to edit_admin_order_path(@quote.order)
         else
           flash[:error] = @quote.errors.messages.values.join(", ")
           redirect_to :back

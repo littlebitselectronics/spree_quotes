@@ -1,0 +1,16 @@
+<% content_for :page_title do %>
+  <% if @order.quote.present? %>
+    <%= link_to "#{Spree.t(:order)} ##{@order.number} - Quote", spree.edit_admin_order_path(@order) %>
+  <% else %>
+    <%= link_to "#{Spree.t(:order)} ##{@order.number}", spree.edit_admin_order_path(@order) %>
+  <% end %>
+<% end %>
+
+<% content_for :sidebar_title do %>
+  <%= Spree.t(:order_information) %>
+<% end %>
+
+<% content_for :sidebar do %>
+  <%= render "spree/admin/shared/order_summary", checkout_steps: @order.checkout_steps %>
+  <%= render "spree/admin/shared/order_submenu", current: current, checkout_steps: @order.checkout_steps %>
+<% end %>
