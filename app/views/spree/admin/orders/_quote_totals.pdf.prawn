@@ -1,8 +1,8 @@
 payment = []
 cc_type = {"discover" => "Discover", "master" => "MasterCard", "visa" => "Visa", "amex" => "AmEx"}
 
-payment << [Prawn::Table::Cell.new( :text => "Invoice State:", :font_style => :bold), quote_payment_state(@order.quote.payment_received).try(:titleize)]
-if @order.payments.present? && @order.quote.payment_received == true
+payment << [Prawn::Table::Cell.new( :text => "Invoice State:", :font_style => :bold), @order.payment_state.try(:titleize)]
+unless @order.payments.blank?
     if @order.payments.last.source_type == "Spree::CreditCard"
       payment << [Prawn::Table::Cell.new( :text => "Payment Method:", :font_style => :bold), "Credit Card"]
       payment << [Prawn::Table::Cell.new( :text => "Card Type:", :font_style => :bold), "#{cc_type[@order.payments.last.source.cc_type]} ending in #{@order.payments.last.source.last_digits}"]
