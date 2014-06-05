@@ -1,5 +1,5 @@
 <% content_for :page_title do %>
-  <% if @order.quote.present? %>
+  <% if @order.quote.present? && @order.payment? %>
     <%= link_to "#{Spree.t(:order)} ##{@order.number} - Quote", spree.edit_admin_order_path(@order) %>
   <% else %>
     <%= link_to "#{Spree.t(:order)} ##{@order.number}", spree.edit_admin_order_path(@order) %>
