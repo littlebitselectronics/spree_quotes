@@ -12,14 +12,14 @@ class Spree::Quote < ActiveRecord::Base
 
   def order_items
     errors_msg = []
-    errors_msg = "the order must have line Items" unless order.line_items.size > 0
+    errors_msg = Spree.t('errors.line_items') unless order.line_items.size > 0
     errors.add :order, errors_msg unless errors_msg.empty?
   end
 
   def order_addresses
     errors_msg = []
-    errors_msg << "Set the Shipping address before continue" if order.shipping_address.nil?
-    errors_msg << "Set the Billing address before continue" if order.billing_address.nil?
+    errors_msg << Spree.t('errors.ship_address') if order.shipping_address.nil?
+    errors_msg << Spree.t('errors.bill_address') if order.billing_address.nil?
     errors.add :order, errors_msg.join("<br/><br/>") unless errors_msg.empty?
   end
 

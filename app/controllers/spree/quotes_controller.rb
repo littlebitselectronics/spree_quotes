@@ -14,6 +14,7 @@ module Spree
       if @quote.valid? && @order.bill_address.present?
         render json: @quote.to_json, status: 200
       else
+        @quote.errors.add(:bill_address, Spree.t('errors.bill_address')) if @order.bill_address.nil?
         render json: @quote.errors.messages.values.join(", "), status: 422
       end
     end
@@ -26,7 +27,7 @@ module Spree
 
     def address_params
       params[:quote].permit(
-        :user_shipping_address,
+        :use_shipping_address,
         :bill_address_attributes => permitted_address_attributes)
     end
 
@@ -35,16 +36,17 @@ module Spree
     end
 
     def set_bill_address
+      @order.bill_address = spree_current_user.default_bill_address
       if @order.bill_address.blank?
-        if address_params[:user_shipping_address] == 'false'
+        if address_params[:use_shipping_address] == 'false'
           @order.build_bill_address(address_params[:bill_address_attributes])
         else
           @order.clone_shipping_address
         end
-
-        @order.save
-        @order.reload
       end
+
+      @order.save
+      @order.reload
     end
 
   end

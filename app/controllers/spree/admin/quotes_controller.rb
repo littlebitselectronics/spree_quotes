@@ -10,7 +10,7 @@ module Spree
 
       def show
         load_order
-        render :layout => false , :template => "spree/admin/orders/quote.pdf.prawn"
+        render layout: false , template: "spree/admin/orders/quote.pdf.prawn"
       end
 
       def create
@@ -32,7 +32,7 @@ module Spree
           redirect_to edit_admin_quote_path(@quote)
         else
           flash[:error] = @quote.errors.messages.values.join(", ")
-          render :action => :edit
+          render action: :edit
         end
       end
 

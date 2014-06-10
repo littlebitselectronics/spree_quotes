@@ -14,3 +14,8 @@ en:
     quote_updated: Quote Updated
     available: Available
     expired: Expired
+
+    errors:
+      line_items: The order must have line Items
+      ship_address: Set the Shipping address before continue
+      bill_address: Set the Billing address before continue
