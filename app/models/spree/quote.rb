@@ -24,7 +24,7 @@ class Spree::Quote < ActiveRecord::Base
   end
 
   def state
-    expiration_date > Spree::Config[:default_expiration_period]
+    (expiration_date - DateTime.now) > Spree::Config[:default_expiration_period]
   end
 
 end
